@@ -21,7 +21,7 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData); //Passing Data to Parent Component
@@ -39,6 +39,7 @@ const ExpenseForm = (props) => {
             type="text"
             value={enteredTitle}
             onChange={titleChangeHandler}
+            required
           />
         </div>
 
@@ -50,6 +51,7 @@ const ExpenseForm = (props) => {
             min="10"
             step="1"
             onChange={amountChangeHandler}
+            required
           />
         </div>
 
@@ -61,11 +63,13 @@ const ExpenseForm = (props) => {
             min="2020-01-01"
             max="2023-12-31"
             onChange={dateChangeHandler}
+            required
           />
         </div>
       </div>
 
       <div className="new-expense__actions">
+        <button type="cancel">Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
